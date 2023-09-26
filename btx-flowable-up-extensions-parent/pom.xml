@@ -24,20 +24,6 @@
 				<scope>import</scope>
 			</dependency>
 			<dependency>
-				<groupId>com.unifiedpost.btx</groupId>
-				<artifactId>btx-core-dependencies</artifactId>
-				<version>${btx.core.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>com.unifiedpost.btx.shared</groupId>
-				<artifactId>btx-shared-libraries-bom</artifactId>
-				<version>0.0.47</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
 				<groupId>${project.groupId}</groupId>
 				<artifactId>btx-flowable-up-extensions-api</artifactId>
 				<version>${project.version}</version>

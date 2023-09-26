@@ -15,8 +15,6 @@
 	<name>btx-flowable-up-extensions-root</name>
 
 	<modules>
-		<module>btx-flowable-up-extensions-api</module>
-		<module>btx-flowable-up-extensions-openapi</module>
 		<module>btx-flowable-up-extensions-parent</module>
 		<module>btx-flowable-up-extensions-spring</module>
 	</modules>

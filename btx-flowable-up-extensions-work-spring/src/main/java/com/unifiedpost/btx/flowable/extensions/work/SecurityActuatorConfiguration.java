@@ -1,5 +1,5 @@
 /* Copyright 2023 Unifiedpost SA. */
-package com.unifiedpost.btx.flowable.extensions;
+package com.unifiedpost.btx.flowable.extensions.work;
 
 import com.flowable.actuate.autoconfigure.security.servlet.ActuatorRequestMatcher;
 import com.flowable.platform.common.security.SecurityConstants;
@@ -21,11 +21,10 @@ public class SecurityActuatorConfiguration {
 	// endpoints
 	public SecurityFilterChain basicActuatorSecurity(HttpSecurity http) throws Exception {
 
-		http.sessionManagement()
-				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-				.and()
-				.csrf()
-				.disable();
+		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		//				.and()
+		//				.csrf()
+		//				.disable(); //todo: check impact
 
 		http.requestMatcher(new ActuatorRequestMatcher())
 				.authorizeRequests()

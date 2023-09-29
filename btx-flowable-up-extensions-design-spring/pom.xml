@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.unifiedpost.btx.flowable.extensions</groupId>
+		<artifactId>btx-flowable-up-extensions-parent</artifactId>
+		<version>${revision}${sha1}${changelist}</version>
+		<relativePath>../btx-flowable-up-extensions-parent/pom.xml</relativePath>
+	</parent>
+
+	<artifactId>btx-flowable-up-extensions-design-spring</artifactId>
+	<packaging>jar</packaging>
+
+	<name>btx-flowable-up-extensions-design-spring</name>
+	<properties>
+		<flowable.design.version>3.14.2</flowable.design.version>
+	</properties>
+	<dependencies>
+
+		<dependency>
+			<groupId>com.flowable.design</groupId>
+			<artifactId>flowable-design-security</artifactId>
+			<version>${flowable.design.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<!-- =============== -->
+		<!-- Contains all Flowable design configuration -->
+		<dependency>
+			<groupId>com.flowable.design</groupId>
+			<artifactId>flowable-spring-boot-starter-design</artifactId>
+			<version>${flowable.design.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Optional Dependency to activate the Actuator Endpoints -->
+		<dependency>
+			<groupId>com.flowable.design</groupId>
+			<artifactId>flowable-spring-boot-starter-design-actuator</artifactId>
+			<version>${flowable.design.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.flowable.platform</groupId>
+			<artifactId>flowable-platform-palette</artifactId>
+			<version>${flowable.design.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Contains all Flowable Actuator and Spring Boot Actuator configuration -->
+		<dependency>
+			<groupId>com.flowable.platform</groupId>
+			<artifactId>flowable-spring-boot-starter-platform-actuator</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.5.4</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- =============== -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-client</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-oauth2-jose</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>io.projectreactor</groupId>
+			<artifactId>reactor-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.skyscreamer</groupId>
+			<artifactId>jsonassert</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<filtering>true</filtering>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>application.properties</include>
+				</includes>
+			</resource>
+			<resource>
+				<filtering>false</filtering>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>application.properties</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<configuration>
+					<container>
+						<mainClass>com.unifiedpost.btx.flowable.extensions.work.Application</mainClass>
+					</container>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>io.github.git-commit-id</groupId>
+				<artifactId>git-commit-id-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>revision</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<!--			<plugin>-->
+			<!--				<groupId>org.springdoc</groupId>-->
+			<!--				<artifactId>springdoc-openapi-maven-plugin</artifactId>-->
+			<!--				<version>1.4</version>-->
+			<!--				<configuration>-->
+			<!--					<apiDocsUrl>http://localhost:8080/v3/api-docs.yaml</apiDocsUrl>-->
+			<!--					<outputFileName>openapi.yaml</outputFileName>-->
+			<!--				</configuration>-->
+			<!--				<executions>-->
+			<!--					<execution>-->
+			<!--						<id>generate-openapi-specification-file</id>-->
+			<!--						<goals>-->
+			<!--							<goal>generate</goal>-->
+			<!--						</goals>-->
+			<!--					</execution>-->
+			<!--				</executions>-->
+			<!--			</plugin>-->
+			<!--			<plugin>-->
+			<!--				<groupId>org.springframework.boot</groupId>-->
+			<!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
+			<!--				<configuration>-->
+			<!--					<jvmArguments>-Dspring.application.admin.enabled=true</jvmArguments>-->
+			<!--				</configuration>-->
+			<!--				<executions>-->
+			<!--					<execution>-->
+			<!--						<id>pre-integration-test</id>-->
+			<!--						<goals>-->
+			<!--							<goal>start</goal>-->
+			<!--						</goals>-->
+			<!--					</execution>-->
+			<!--					<execution>-->
+			<!--						<id>post-integration-test</id>-->
+			<!--						<goals>-->
+			<!--							<goal>stop</goal>-->
+			<!--						</goals>-->
+			<!--					</execution>-->
+			<!--				</executions>-->
+			<!--			</plugin>-->
+		</plugins>
+	</build>
+
+</project>

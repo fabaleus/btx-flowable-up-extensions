@@ -1,5 +1,5 @@
 /* Copyright 2023 Unifiedpost SA. */
-package com.unifiedpost.btx.flowable.extensions;
+package com.unifiedpost.btx.flowable.extensions.work;
 
 import com.flowable.autoconfigure.frontend.FrontendProperties;
 import com.flowable.autoconfigure.security.FlowableHttpSecurityCustomizer;

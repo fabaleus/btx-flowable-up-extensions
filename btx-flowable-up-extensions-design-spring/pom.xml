@@ -9,21 +9,15 @@
 		<relativePath>../btx-flowable-up-extensions-parent/pom.xml</relativePath>
 	</parent>
 
-	<artifactId>btx-flowable-up-extensions-design-spring</artifactId>
+	<artifactId>flowable-up-design-spring</artifactId>
 	<packaging>jar</packaging>
 
-	<name>btx-flowable-up-extensions-design-spring</name>
+	<name>flowable-up-design-spring</name>
 	<properties>
 		<flowable.design.version>3.14.2</flowable.design.version>
 	</properties>
 	<dependencies>
 
-		<dependency>
-			<groupId>com.flowable.design</groupId>
-			<artifactId>flowable-design-security</artifactId>
-			<version>${flowable.design.version}</version>
-			<scope>provided</scope>
-		</dependency>
 		<!-- =============== -->
 		<!-- Contains all Flowable design configuration -->
 		<dependency>
@@ -40,7 +34,6 @@
 			<version>${flowable.design.version}</version>
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>com.flowable.platform</groupId>
 			<artifactId>flowable-platform-palette</artifactId>
@@ -48,12 +41,6 @@
 			<scope>provided</scope>
 		</dependency>
 
-		<!-- Contains all Flowable Actuator and Spring Boot Actuator configuration -->
-		<dependency>
-			<groupId>com.flowable.platform</groupId>
-			<artifactId>flowable-spring-boot-starter-platform-actuator</artifactId>
-			<scope>provided</scope>
-		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -73,24 +60,17 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-oauth2-resource-server</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
-		<!-- =============== -->
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-oauth2-client</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-oauth2-jose</artifactId>
 			<scope>provided</scope>
 		</dependency>
 
@@ -104,12 +84,6 @@
 			<artifactId>jsonassert</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-
 	</dependencies>
 
 	<build>

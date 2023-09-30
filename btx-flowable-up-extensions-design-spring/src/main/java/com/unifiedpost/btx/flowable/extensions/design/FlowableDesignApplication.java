@@ -6,9 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration;
 
 @SpringBootApplication(exclude = {FreeMarkerAutoConfiguration.class})
-public class Application {
+public class FlowableDesignApplication {
+	public FlowableDesignApplication() {}
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(FlowableDesignApplication.class, args);
 	}
 }

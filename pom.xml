@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.unifiedpost.btx</groupId>
 		<artifactId>btx-parent</artifactId>
-		<version>0.0.37</version>
+		<version>0.0.48</version>
 	</parent>
 
 	<groupId>com.unifiedpost.btx.flowable.extensions</groupId>
@@ -15,9 +15,9 @@
 	<name>btx-flowable-up-extensions-root</name>
 
 	<modules>
-		<module>btx-flowable-up-extensions-design-spring</module>
 		<module>btx-flowable-up-extensions-parent</module>
-		<module>btx-flowable-up-extensions-work-spring</module>
+		<module>flowable-up-design-spring</module>
+		<module>flowable-up-work-spring</module>
 	</modules>
 
 	<properties>

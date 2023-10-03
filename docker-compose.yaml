@@ -28,30 +28,13 @@ services:
     ports:
       - 9200:9200
 
-  flowable-design:
-    image: artifacts.flowable.com/flowable/flowable-design:latest
-    environment:
-      flowable.design.remote.authentication.user: admin
-      flowable.design.remote.authentication.password: test
-      flowable.design.remote.idm-url: http://host.docker.internal:8080
-      flowable.design.deployment-api-url: http://host.docker.internal:8080/app-api
-      flowable.design.undeployment-api-url: http://host.docker.internal:8080/platform-api/app-deployments
-      server.servlet.context-path: /
-      spring.datasource.driver-class-name: org.postgresql.Driver
-      spring.datasource.url: jdbc:postgresql://database:5432/flowable
-      spring.datasource.username: flowable
-      spring.datasource.password: flowable
-    ports:
-      - 8091:8080
-    depends_on:
-      - database
-
   flowable-control:
     image: artifacts.flowable.com/flowable/flowable-control:latest
     environment:
       flowable.common.app.idm-admin.user: admin
       flowable.common.app.idm-admin.password: test
       flowable.control.app.cluster-config.server-address: http://host.docker.internal
+      #flowable.control.app.cluster-config.server-address: http://flowable-work
       flowable.control.app.cluster-config.port: 8080
       flowable.control.app.cluster-config.context-root: /
       flowable.control.app.cluster-config.password: test
@@ -60,6 +43,27 @@ services:
       spring.datasource.url: jdbc:postgresql://database:5432/flowable
       spring.datasource.username: flowable
       spring.datasource.password: flowable
+      flowable.control.app.security.type: oauth2
+      application.security.type: oauth2
+      spring.security.oauth2.client.registration.flowable-control.client-name: Keycloak Control
+      spring.security.oauth2.client.registration.flowable-control.client-id: flowable-control
+      spring.security.oauth2.client.registration.flowable-control.client-secret: DHTnpNU2gSoLCKEWrloCePw7Y2esFpUW
+      spring.security.oauth2.client.registration.flowable-control.authorization-grant-type: authorization_code
+      spring.security.oauth2.client.registration.flowable-control.scope: openid,profile
+      spring.security.oauth2.client.provider.flowable-control.issuer-uri: https://iam.devel.unifiedpost.com/auth/realms/devel-flowable
+      spring.security.oauth2.client.provider.flowable-control.user-name-attribute: preferred_username
+      flowable.control.app.security.oauth2.authorities-attributes: roles
+      flowable.control.app.security.oauth2.admin-authorities: flowable-control-admin
+      server.forward-headers-strategy: NATIVE
+      spring.security.oauth2.client.provider.admin-access.token-uri: https://iam.devel.unifiedpost.com/auth/realms/devel-flowable/protocol/openid-connect/token
+      spring.security.oauth2.client.registration.admin-access.client-name: Work Admin Access
+      spring.security.oauth2.client.registration.admin-access.client-id: flowable-control
+      spring.security.oauth2.client.registration.admin-access.client-secret: DHTnpNU2gSoLCKEWrloCePw7Y2esFpUW
+      spring.security.oauth2.client.registration.admin-access.authorization-grant-type: client_credentials
+      spring.security.oauth2.client.provider.admin-access.user-name-attribute: preferred_username
+      spring.security.oauth2.client.registration.admin-access.scope: openid
+      flowable.control.app.security.oauth2.post-logout-redirect-url: https://flowable-work.flowable.prod.fabaleus.com
+      flowable.control.app.license-location: "file:${HOME}/.flowable/flowable.license"
     ports:
       - 8092:8080
     depends_on:

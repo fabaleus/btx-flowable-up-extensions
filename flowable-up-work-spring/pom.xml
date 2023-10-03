@@ -21,6 +21,12 @@
 			<version>4.7.3</version>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.unifiedpost.btx.flowable.extensions</groupId>
+			<artifactId>flowable-custom-extensions</artifactId>
+			<version>${revision}${sha1}${changelist}</version>
+			<scope>compile</scope>
+		</dependency>
 		<!--		load the inspect module, should be disabled in PROD!-->
 		<dependency>
 			<groupId>com.flowable.inspect</groupId>
@@ -122,7 +128,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 	</dependencies>
 
 	<build>

@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.unifiedpost.btx</groupId>
 		<artifactId>btx-parent</artifactId>
-		<version>0.0.37</version>
+		<version>0.0.48</version>
 	</parent>
 
 	<groupId>com.unifiedpost.btx.flowable.extensions</groupId>
@@ -15,16 +15,16 @@
 	<name>btx-flowable-up-extensions-root</name>
 
 	<modules>
-		<module>btx-flowable-up-extensions-api</module>
-		<module>btx-flowable-up-extensions-openapi</module>
 		<module>btx-flowable-up-extensions-parent</module>
-		<module>btx-flowable-up-extensions-spring</module>
+		<module>flowable-custom-extensions</module>
+		<module>flowable-up-design-spring</module>
+		<module>flowable-up-work-spring</module>
 	</modules>
 
 	<properties>
 		<?SORTPOM IGNORE?>
 		<!-- CI-friendly special properties for setting artifact versions. -->
-		<!-- For release builds (automatically created by Jenkins on master builds), 'changelist' will be empty, --> 
+		<!-- For release builds (automatically created by Jenkins on master builds), 'changelist' will be empty, -->
 		<!-- 'revision' will be obtained from pom and 'sha1' will be auto-incremented on each build. -->
 		<revision>0.0.</revision>
 		<sha1>0</sha1>
@@ -33,4 +33,25 @@
 		<maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ss'Z'</maven.build.timestamp.format>
 		<timestamp>${maven.build.timestamp}</timestamp>
 	</properties>
+
+	<repositories>
+
+		<!--
+        TODO: remove these custom repository definitions:
+        - move / depend on parent pom
+        - add flowable-related mirror repositories to the artifact repository
+        -->
+
+		<!-- First, always look in the Central Maven repo -->
+		<repository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>https://repo.maven.apache.org/maven2</url>
+			<layout>default</layout>
+		</repository>
+
+	</repositories>
 </project>

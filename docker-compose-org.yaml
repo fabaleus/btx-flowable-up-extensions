@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+  btx-flowable-up-extensions:
+    image: 'europe-docker.pkg.dev/pj-bu-itops-devops-tools/ag-apps-docker-dev-devopstools-be-prod/up/btx-btx-flowable-up-extensions-spring'
+    mem_limit: 1024M
+    memswap_limit: 1024M
+    container_name: btx-flowable-up-extensions
+    ports:
+      - 8080:8080  # http port for web server
+      - 8081:8081  # http port for management server
+      - 5005:5005  # remote JVM debugging port
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+      - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+      - LOGGING_LEVEL_ROOT=INFO
+      - LOGGING_LEVEL_REQUESTLOGGING=DEBUG

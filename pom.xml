@@ -15,10 +15,10 @@
 	<name>btx-flowable-up-extensions-root</name>
 
 	<modules>
+		<module>flowable-custom-extensions</module>
 		<module>btx-flowable-up-extensions-parent</module>
 		<module>flowable-up-design-spring</module>
 		<module>flowable-up-work-spring</module>
-		<module>flowable-custom-extensions</module>
 	</modules>
 
 	<properties>

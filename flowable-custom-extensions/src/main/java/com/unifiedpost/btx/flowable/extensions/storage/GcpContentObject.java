@@ -9,9 +9,11 @@ import java.nio.charset.StandardCharsets;
 public class GcpContentObject implements ContentObject {
 
     protected final String id;
+    protected final String bucketName;
 
-    public GcpContentObject(String id    /*, Gcpclient gcpClient, String bucketName*/) {
+    public GcpContentObject(String id    /*, Gcpclient gcpClient*/, String bucketName) {
         this.id = id;
+        this.bucketName = bucketName;
     }
 
     @Override

@@ -1,0 +1,25 @@
+<configuration>
+  <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+  <!-- spring boot console appender -->
+  <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+
+  <!-- GCP stackdriver appender: logs straight to GCP logs -->
+  <include resource="com/google/cloud/spring/logging/logback-appender.xml" />
+
+  <!-- GCP stackdriver json console format -->
+  <include resource="com/google/cloud/spring/logging/logback-json-appender.xml" />
+
+
+  <springProfile name="docker">
+    <root level="INFO">
+      <appender-ref ref="CONSOLE_JSON" />
+    </root>
+  </springProfile>
+
+  <springProfile name="default">
+    <root level="INFO">
+      <appender-ref ref="CONSOLE" />
+    </root>
+  </springProfile>
+</configuration>

@@ -96,7 +96,6 @@
 			<artifactId>flowable-event-registry-model</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
 	</dependencies>
 
 </project>

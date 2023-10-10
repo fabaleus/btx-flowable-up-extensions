@@ -8,6 +8,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties({FlowableGcpCloudStorageProperties.class})
-// The GCP Spring integration automatically configures and registeres a Storage bean in the Spring application context
+// The GCP Spring integration automatically configures and registers a Storage bean in the Spring application context
 @ConditionalOnClass({Storage.class})
 public class FlowableGcpCloudStorageAutoConfiguration {}

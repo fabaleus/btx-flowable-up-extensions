@@ -6,6 +6,7 @@ import com.fasterxml.uuid.Generators;
 import com.fasterxml.uuid.impl.TimeBasedGenerator;
 import com.flowable.content.engine.impl.AbstractContentStorage;
 import com.flowable.content.engine.impl.ContentItemContentObjectStorageMetadata;
+import com.google.cloud.storage.Storage;
 import java.io.InputStream;
 import java.util.Map;
 import org.flowable.content.api.ContentItem;
@@ -21,6 +22,13 @@ public class GcpContentStorage extends AbstractContentStorage implements Content
 
 	private static final TimeBasedGenerator UUID_GENERATOR =
 			Generators.timeBasedGenerator(EthernetAddress.fromInterface());
+	protected final Storage storage;
+	protected final String bucket;
+
+	public GcpContentStorage(Storage storage, String bucket) {
+		this.storage = storage;
+		this.bucket = bucket;
+	}
 
 	@Override
 	public ContentObject createContentObject(InputStream contentStream, ContentObjectStorageMetadata metaData) {
@@ -58,7 +66,7 @@ public class GcpContentStorage extends AbstractContentStorage implements Content
 
 	@Override
 	public String getContentStoreName() {
-		return "gcp-test";
+		return "gcp-cloud-storage";
 	}
 
 	protected ContentObject uploadFile(
@@ -69,7 +77,7 @@ public class GcpContentStorage extends AbstractContentStorage implements Content
 	}
 
 	protected GcpContentObject getGcpContentObject(String contentId) {
-		return new GcpContentObject(contentId);
+		return new GcpContentObject(contentId, this.bucket);
 	}
 
 	private String inspectMetaData(ContentObjectStorageMetadata metaData) {

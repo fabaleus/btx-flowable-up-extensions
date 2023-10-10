@@ -76,6 +76,11 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
+			<groupId>com.google.cloud</groupId>
+			<artifactId>google-cloud-storage</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>42.5.4</version>
@@ -112,7 +117,6 @@
 			<artifactId>spring-security-oauth2-jose</artifactId>
 			<scope>provided</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>io.projectreactor</groupId>
 			<artifactId>reactor-test</artifactId>
@@ -128,7 +132,19 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-snapshots</id>
+			<url>https://repo.spring.io/snapshot</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<url>https://repo.spring.io/milestone</url>
+		</pluginRepository>
+	</pluginRepositories>
 
 	<build>
 		<resources>
@@ -148,6 +164,7 @@
 			</resource>
 		</resources>
 		<plugins>
+
 			<plugin>
 				<groupId>com.google.cloud.tools</groupId>
 				<artifactId>jib-maven-plugin</artifactId>
@@ -168,6 +185,11 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
 			<!--			<plugin>-->
 			<!--				<groupId>org.springdoc</groupId>-->
 			<!--				<artifactId>springdoc-openapi-maven-plugin</artifactId>-->
@@ -185,27 +207,27 @@
 			<!--					</execution>-->
 			<!--				</executions>-->
 			<!--			</plugin>-->
-			<!--			<plugin>-->
-			<!--				<groupId>org.springframework.boot</groupId>-->
-			<!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
-			<!--				<configuration>-->
-			<!--					<jvmArguments>-Dspring.application.admin.enabled=true</jvmArguments>-->
-			<!--				</configuration>-->
-			<!--				<executions>-->
-			<!--					<execution>-->
-			<!--						<id>pre-integration-test</id>-->
-			<!--						<goals>-->
-			<!--							<goal>start</goal>-->
-			<!--						</goals>-->
-			<!--					</execution>-->
-			<!--					<execution>-->
-			<!--						<id>post-integration-test</id>-->
-			<!--						<goals>-->
-			<!--							<goal>stop</goal>-->
-			<!--						</goals>-->
-			<!--					</execution>-->
-			<!--				</executions>-->
-			<!--			</plugin>-->
+			<!--						<plugin>-->
+			<!--							<groupId>org.springframework.boot</groupId>-->
+			<!--							<artifactId>spring-boot-maven-plugin</artifactId>-->
+			<!--							<configuration>-->
+			<!--								<jvmArguments>-Dspring.application.admin.enabled=true</jvmArguments>-->
+			<!--							</configuration>-->
+			<!--							<executions>-->
+			<!--								<execution>-->
+			<!--									<id>pre-integration-test</id>-->
+			<!--									<goals>-->
+			<!--										<goal>start</goal>-->
+			<!--									</goals>-->
+			<!--								</execution>-->
+			<!--								<execution>-->
+			<!--									<id>post-integration-test</id>-->
+			<!--									<goals>-->
+			<!--										<goal>stop</goal>-->
+			<!--									</goals>-->
+			<!--								</execution>-->
+			<!--							</executions>-->
+			<!--						</plugin>-->
 		</plugins>
 	</build>
 

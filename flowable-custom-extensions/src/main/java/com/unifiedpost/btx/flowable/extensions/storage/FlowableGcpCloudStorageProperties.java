@@ -2,10 +2,8 @@
 package com.unifiedpost.btx.flowable.extensions.storage;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
 
 @ConfigurationProperties(prefix = "flowable.gcp.cloud-storage")
-@Component
 public class FlowableGcpCloudStorageProperties {
 
 	protected String bucket;

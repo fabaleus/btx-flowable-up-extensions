@@ -10,10 +10,9 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class StorageConfiguration {
-	private FlowableGcpCloudStorageProperties properties;
 
 	@Bean
-	public GcpContentStorage gcpContentStorage(Storage storage) {
+	public GcpContentStorage gcpContentStorage(Storage storage, FlowableGcpCloudStorageProperties properties) {
 		return new GcpContentStorage(storage, properties.getBucket());
 	}
 

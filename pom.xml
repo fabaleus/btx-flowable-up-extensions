@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
+	<!--<parent>
 		<groupId>com.unifiedpost.btx</groupId>
 		<artifactId>btx-parent</artifactId>
 		<version>0.0.48</version>
-	</parent>
+	</parent>-->
 
 	<groupId>com.unifiedpost.btx.flowable.extensions</groupId>
 	<artifactId>btx-flowable-up-extensions-root</artifactId>
@@ -15,7 +15,6 @@
 	<name>btx-flowable-up-extensions-root</name>
 
 	<modules>
-		<module>flowable-custom-extensions</module>
 		<module>btx-flowable-up-extensions-parent</module>
 		<module>flowable-custom-extensions</module>
 		<module>flowable-up-design-spring</module>
@@ -52,6 +51,20 @@
 			<name>Central Repository</name>
 			<url>https://repo.maven.apache.org/maven2</url>
 			<layout>default</layout>
+		</repository>
+
+		<!-- Fallback to the Flowable/Edorasware -->
+		<repository>
+			<id>flowable-repo</id>
+			<name>flowable-repo</name>
+			<url>https://artifacts.flowable.com/artifactory/flowable-maven-all</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>aspose</id>
+			<url>https://repository.aspose.com/repo/</url>
 		</repository>
 
 	</repositories>

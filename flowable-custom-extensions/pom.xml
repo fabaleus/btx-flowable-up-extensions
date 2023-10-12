@@ -2,16 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
+	<!--<parent>
 		<groupId>com.unifiedpost.btx.flowable.extensions</groupId>
 		<artifactId>btx-flowable-up-extensions-parent</artifactId>
 		<version>${revision}${sha1}${changelist}</version>
 		<relativePath>../btx-flowable-up-extensions-parent/pom.xml</relativePath>
-	</parent>
+	</parent>-->
 
 	<groupId>com.unifiedpost.btx.flowable.extensions</groupId>
 	<artifactId>flowable-custom-extensions</artifactId>
-	<version>${revision}${sha1}${changelist}</version>
+	<version>1.0-SNAPSHOT</version>
 
 	<name>flowable-custom-extensions</name>
 
@@ -108,5 +108,34 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<repositories>
+
+		<!--
+        TODO: remove these custom repository definitions:
+        - move / depend on parent pom
+        - add flowable-related mirror repositories to the artifact repository
+        -->
+
+		<!-- First, always look in the Central Maven repo -->
+		<repository>
+			<id>central</id>
+			<name>Central Repository</name>
+			<url>https://repo.maven.apache.org/maven2</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>flowable-repo</id>
+			<name>flowable-repo</name>
+			<url>https://artifacts.flowable.com/artifactory/flowable-maven-all</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
 
 </project>

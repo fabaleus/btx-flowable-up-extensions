@@ -64,9 +64,7 @@
 			<groupId>com.flowable.core</groupId>
 			<artifactId>flowable-content-engine</artifactId>
 			<scope>provided</scope>
-			<optional>true</optional>
 		</dependency>
-
 		<dependency>
 			<groupId>com.google.cloud</groupId>
 			<artifactId>spring-cloud-gcp-starter-storage</artifactId>
@@ -87,25 +85,16 @@
 			<groupId>org.flowable</groupId>
 			<artifactId>flowable-event-registry</artifactId>
 			<scope>provided</scope>
-			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.flowable</groupId>
 			<artifactId>flowable-event-registry-api</artifactId>
 			<scope>provided</scope>
-			<optional>true</optional>
 		</dependency>
 		<dependency>
 			<groupId>org.flowable</groupId>
 			<artifactId>flowable-event-registry-model</artifactId>
 			<scope>provided</scope>
-			<optional>true</optional>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
 

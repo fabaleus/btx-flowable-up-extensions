@@ -8,13 +8,13 @@ import org.flowable.content.api.ContentObject;
 
 public class GcpContentObject implements ContentObject {
 
-    protected final String id;
-    protected final String bucketName;
+	protected final String id;
+	protected final String bucketName;
 
-    public GcpContentObject(String id    /*, Gcpclient gcpClient*/, String bucketName) {
-        this.id = id;
-        this.bucketName = bucketName;
-    }
+	public GcpContentObject(String id /*, Gcpclient gcpClient*/, String bucketName) {
+		this.id = id;
+		this.bucketName = bucketName;
+	}
 
 	@Override
 	public String getId() {
